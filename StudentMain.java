@@ -1,3 +1,6 @@
+interface Displayed{
+	void displayDetails();
+}
 abstract class Persons{
 	private String name;
 	private String department;
@@ -16,7 +19,7 @@ abstract class Persons{
 		this.name=name;
 	}
 	
-	public String getDepartment(){s
+	public String getDepartment(){
 		return department;
 	}
 	public void setDepartment(String department){
@@ -29,11 +32,9 @@ abstract class Persons{
 	public void setrollNum(int rollNum){
 		this.rollNum=rollNum;
 	}
-	
-	abstract void displayDetails();
 }
 
-class Student extends Persons{
+class Student extends Persons implements Displayed{
 	private int mark1;
 	private int mark2;
 	private int mark3;
@@ -60,7 +61,7 @@ class Student extends Persons{
     }
 		
 	@Override
-	void displayDetails(){
+	public void displayDetails(){
 		System.out.println("-------------Student Detais--------------");
 		System.out.println("Name : " + getName());
 		System.out.println("Department:"  + getDepartment()); 
@@ -73,7 +74,7 @@ class Student extends Persons{
 	}
 }
 	
-class Teacher extends Persons{
+class Teacher extends Persons implements Displayed{
 	private double salary;
 	private String subject;
 		
@@ -84,7 +85,7 @@ class Teacher extends Persons{
 	}
 	
 	@Override
-	void displayDetails(){
+	public void displayDetails(){
 		System.out.println("-------------Teacher Detais--------------");
 		System.out.println("Name : " + getName());
 		System.out.println("Department:"  + getDepartment()); 
@@ -96,13 +97,52 @@ class Teacher extends Persons{
 
 public class StudentMain{
 	public static void main(String[] args){
-		Persons s1=new Student("Jeyashree","Cyber Security",111,98,95,97);
+		Displayed s1=new Student("Jeyashree","Cyber Security",111,98,95,97);
 		s1.displayDetails();
-		Persons s2=new Student("Jeya","Cyber Security",112,89,90,87);
+		Displayed s2=new Student("Jeya","Cyber Security",112,89,90,87);
 		s2.displayDetails();
-		Persons s3=new Student("Shree","Cyber Security",113,35,40,60);
+		Displayed s3=new Student("Shree","Cyber Security",113,35,40,60);
 		s3.displayDetails();
-		Persons t1=new Teacher("Raji","Cyber Security",201,75000,"Network Security");
+		Displayed t1=new Teacher("Raji","Cyber Security",201,75000,"Network Security");
 		t1.displayDetails();
 	}
 }
+
+
+
+***********************************************************************************OUTPUT********************************************************************************************
+-------------Student Detais--------------
+Name : Jeyashree
+Department:Cyber Security
+Roll Number: 111
+Marks1: 98
+Marks2: 95
+Marks3: 97
+Total: 290
+Grade Point is: A+
+-------------Student Detais--------------
+Name : Jeya
+Department:Cyber Security
+Roll Number: 112
+Marks1: 89
+Marks2: 90
+Marks3: 87
+Total: 266
+Grade Point is: A
+-------------Student Detais--------------
+Name : Shree
+Department:Cyber Security
+Roll Number: 113
+Marks1: 35
+Marks2: 40
+Marks3: 60
+Total: 135
+Grade Point is: Fail
+-------------Teacher Detais--------------
+Name : Raji
+Department:Cyber Security
+Roll Number: 201
+Salary : 75000.0
+Subject : Network Security
+
+	
